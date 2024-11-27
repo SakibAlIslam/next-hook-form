@@ -9,8 +9,10 @@ export default {
   theme: {
     extend: {
       colors: {
+        primaryText: "var(--primaryText)",
         background: "var(--background)",
         foreground: "var(--foreground)",
+        disableText: "var(--disableText)",
       },
       keyframes: {
         'gradient-border': {
