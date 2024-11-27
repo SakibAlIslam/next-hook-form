@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import "@radix-ui/themes/styles.css";
 import "./globals.css";
 import ReactQueryProvider from "./ReactQueryProvider/ReactQueryProvider";
 
