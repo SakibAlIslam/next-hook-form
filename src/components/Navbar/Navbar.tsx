@@ -1,19 +1,22 @@
-// 'use client';  // This makes the component client-side only
 'use client';
 
 import Image from 'next/image';
 import Link from 'next/link';
-import React from 'react';
+import React, { useState } from 'react';
 import logo from '../../../public/logo.png';
 import Button from '../Button/Button';
 import { usePathname } from 'next/navigation';
 import styles from './Navbar.module.css';
+import { HamburgerMenuIcon } from '@radix-ui/react-icons';
+import NavDrawer from '../NavDrawer/NavDrawer'
 
 type NavbarProps = {
-    className?: string; // Custom class names for further styling
+    className?: string;
 };
 
 const Navbar: React.FC<NavbarProps> = ({ className = '' }) => {
+    const [drawerOpen, setDrawerOpen] = useState(false);
+
     const pathname = usePathname(); // Get the current pathname
     const baseStyles = `navbar
     bg-background text-foreground px-12 py-4 w-full h-20 flex`;
@@ -28,7 +31,7 @@ const Navbar: React.FC<NavbarProps> = ({ className = '' }) => {
         <nav className={`${baseStyles} ${className}`}>
             <div className='nav-container flex items-center justify-between gap-2 w-full max-w-screen-2xl m-auto'>
                 <Image src={logo} alt="logo" width={100} height={100} />
-                <ul className="flex items-center justify-evenly gap-4">
+                <ul className="items-center justify-evenly gap-4 hidden md:flex">
                     <li className={isActive('/') ? `${styles.activeMenu} ${activeMenuStyles}` : inActiveMenuStyles}>
                         <Link href="/">Home</Link>
                     </li>
@@ -46,6 +49,7 @@ const Navbar: React.FC<NavbarProps> = ({ className = '' }) => {
                     </li>
                 </ul>
                 <Button
+                    className='hidden md:flex'
                     variant="secondary"
                     size="small"
                     isLoading={false}
@@ -53,6 +57,8 @@ const Navbar: React.FC<NavbarProps> = ({ className = '' }) => {
                 >
                     Contact Us
                 </Button>
+                <HamburgerMenuIcon className='w-5 h-5 lg:hidden cursor-pointer' onClick={() => setDrawerOpen(!drawerOpen)} />
+                <NavDrawer open={drawerOpen} setDrawerOpen={setDrawerOpen} />
             </div>
         </nav>
     );

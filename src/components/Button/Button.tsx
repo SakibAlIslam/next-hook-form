@@ -22,11 +22,11 @@ const Button: React.FC<ButtonProps> = ({
     size = 'medium',
     isLoading = false,
     isDisabled = false,
-    className = 'flex items-center justify-center gap-2',
+    className = '',
     style,
     ariaLabel,
 }) => {
-    const baseStyles = 'rounded focus:outline-none';
+    const baseStyles = 'flex items-center justify-center gap-2 rounded focus:outline-none';
     const sizeClasses = {
         small: 'px-4 py-2 text-sm',
         medium: 'px-6 py-3 text-base',

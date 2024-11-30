@@ -4,7 +4,6 @@ import { store } from '@/lib/store';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { useMemo } from 'react';
 import { Provider } from 'react-redux';
-import { Theme } from "@radix-ui/themes";
 
 export default function ReactQueryProvider({
     children,
@@ -17,9 +16,7 @@ export default function ReactQueryProvider({
     return (
         <Provider store={store}>
             <QueryClientProvider client={queryClient}>
-                <Theme accentColor="indigo">
-                    {children} {/* All children will have React Query available */}
-                </Theme>
+                {children} {/* All children will have React Query available */}
             </QueryClientProvider>
         </Provider>
     );
