@@ -40,7 +40,13 @@ const Form = () => {
                     id="email"
                     placeholder='Enter your email'
                     className='h-12 mt-1 text-white bg-[#292929] border-2 border-[#383838] rounded-lg px-4 py-1 focus:outline-none focus:ring-1 focus:ring-green-500 caret-green-500'
-                    {...register('email', { required: 'Email is required' })} 
+                    {...register('email', { 
+                        required: 'Email is required',
+                        pattern: {
+                            value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+                            message: 'Invalid email address'
+                        }
+                    })} 
                 />
                 {errors.email && <p className='mt-1 text-sm text-red-500'>{errors.email.message}</p>}
             </div>
